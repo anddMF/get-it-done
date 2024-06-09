@@ -1,1 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Long+Cang&display=swap');
+
+:root {
+    --font-light: 300;
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    --blue-1: #0E0D34;
+    --blue-2: #65B4FD;
+    --grey-1-trans: #dadada3b;
+    --green-1: #20C580;
+    --red-1: #FF7272;
+}
+
+.poppins-light {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300 !important;
+    font-style: normal;
+
+    &-medium {
+        font-family: "Poppins", sans-serif;
+        font-weight: 500 !important;
+        font-style: normal;
+    }
+
+    &-semibold {
+        font-family: "Poppins", sans-serif;
+        font-weight: 600 !important;
+        font-style: normal;
+    }
+
+    &-bold {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700 !important;
+        font-style: normal;
+    }
+}
+
+.long-cang-regular {
+    font-family: "Long Cang", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+html,
+body {
+    background: #0E0D34;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.bg-grey-trans {
+    background-color: var(--grey-1-trans) !important;
+}
+
+.bg-blue-1 {
+    background-color: var(--blue-1) !important;
+}
