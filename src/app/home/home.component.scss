@@ -1,0 +1,21 @@
+input {
+    background-color: #faebd700;
+    color: white;
+    border-width: 2px;
+    border-color: #EEEEEE;
+}
+
+input:focus {
+    background-color: #0000002c;
+    color: white;
+    outline: none !important;
+    box-shadow: none;
+    border-color: #EEEEEE;
+    box-shadow: 0 0.5rem 1rem #00000026 !important;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+::placeholder {
+    color: #BBBBBB;
+    opacity: 1;
+}
