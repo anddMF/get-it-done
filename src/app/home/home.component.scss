@@ -3,6 +3,16 @@
     color: white;
     border-width: 2px 0 2px 2px;
     border-color: #EEEEEE;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.custom-input:focus, .custom-input:hover {
+  background-color: #0000002c;
+  color: white;
+  outline: none !important;
+  box-shadow: none;
+  border-color: #EEEEEE;
+  box-shadow: 0 0.5rem 1rem #00000026 !important;
 }
 
 .add-button {
@@ -17,16 +27,6 @@
 
 .add-button:hover {
   background-color: var(--accent-color);
-}
-
-.custom-input:focus {
-    background-color: #0000002c;
-    color: white;
-    outline: none !important;
-    box-shadow: none;
-    border-color: #EEEEEE;
-    box-shadow: 0 0.5rem 1rem #00000026 !important;
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 ::placeholder {

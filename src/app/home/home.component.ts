@@ -7,17 +7,19 @@ import { Task } from '../shared/models/task.model';
 })
 export class HomeComponent {
   taskInput: string = '';
+  showInputSubtask: boolean = false;
+  subtaskInput: string = '';
 
   //TODO: convert DATE to localtime
   subtasks: Task[] = [
-    {id:1, done: false, text: 'SUBTASK 01', createdAt: new Date()},
-    {id:2, done: true, text: 'SUBTASK 02', createdAt: new Date()}
+    this.createTask('SUBTASK 01', 1),
+    this.createTask('SUBTASK 02', 2)
   ]
 
   tasks: Task[] = [
-    {id:1, done: false, text: 'Teste 01', createdAt: new Date()},
-    {id:2, done: true, text: 'Teste 02', createdAt: new Date(), subtasks: this.subtasks},
-    {id:3, done: false, text: 'Teste 03', createdAt: new Date()}
+    this.createTask('TESTE 01', 1),
+    this.createTask('TESTE 02', 2, this.subtasks),
+    this.createTask('TESTE 03', 3)
   ]
 
   checkTask(task: Task) {
@@ -26,8 +28,18 @@ export class HomeComponent {
   
   addTask(text: string) {
     if(text)
-      this.tasks.push({id: this.tasks.length + 1, text, done: false, createdAt: new Date()})
+      this.createTask(text, this.tasks.length + 1)
 
     this.taskInput = '';
+  }
+
+  addSubtask(task: Task, text: string) {
+    if(text) {
+      task.subtasks?.push(this.createTask(text, task.subtasks.length + 1))
+    }
+  }
+
+  private createTask(text: string, id: number, subtasks?: Task[]): Task {
+    return {id, text, done: false, createdAt: new Date(), addSubtask: false, subtasks}
   }
 }

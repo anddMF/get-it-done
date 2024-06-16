@@ -31,7 +31,11 @@
                             </span>
                             <span class="text-white">{{ item.text }}</span>
                         </label>
+                        <button class="btn btn-primary ms-auto" (click)="item.addSubtask = !item.addSubtask">test</button>
                     </div>
+                    
+                    <input *ngIf="item.addSubtask" type="text" [(ngModel)]="subtaskInput" class="form-control custom-input" placeholder="Add subtask"
+                    (keyup.enter)="addSubtask(item, subtaskInput)">
                     <div *ngIf="item.subtasks" class="mb-3">
                         <div *ngFor="let subtask of item.subtasks; let j = index" (click)="checkTask(subtask)" class="checkbox-wrapper mt-1 col-11 ms-auto">
                             <input type="checkbox" [checked]="item.subtasks[j].done" id='subtasks{{j}}' class="inp-cbx" />

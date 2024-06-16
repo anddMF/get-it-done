@@ -4,4 +4,6 @@ export interface Task {
     done: boolean;
     createdAt: Date;
     subtasks?: Task[];
+
+    addSubtask: boolean;
 }
