@@ -21,8 +21,7 @@
             <div class="tasks-container col-12 mt-3">
                 <div *ngFor="let item of tasks; let i = index" class="mb-2">
                     <div class="checkbox-wrapper mt-1" (click)="checkTask(item)">
-                        <input type="checkbox" [checked]="tasks[i].done" id='tasks{{i}}'
-                            class="inp-cbx" />
+                        <input type="checkbox" [checked]="tasks[i].done" id='tasks{{i}}' class="inp-cbx" />
                         <label for="cbx" class="cbx">
                             <span>
                                 <svg viewBox="0 0 12 10" height="10px" width="12px">
@@ -31,14 +30,23 @@
                             </span>
                             <span class="text-white">{{ item.text }}</span>
                         </label>
-                        <button class="btn btn-primary ms-auto" (click)="item.addSubtask = !item.addSubtask">test</button>
+
                     </div>
-                    
-                    <input *ngIf="item.addSubtask" type="text" [(ngModel)]="subtaskInput" class="form-control custom-input" placeholder="Add subtask"
-                    (keyup.enter)="addSubtask(item, subtaskInput)">
+                    <button class="btn btn-primary ms-auto" (click)="item.addSubtask = !item.addSubtask">test</button>
+                    <div *ngIf="item.addSubtask" class="input-group">
+                        <input type="text" [(ngModel)]="subtaskInput"
+                            class="form-control custom-input" placeholder="Add subtask"
+                            (keyup.enter)="addSubtask(item, subtaskInput)">
+                        <div class="input-group-append">
+                            <button class="btn add-button" (click)="addSubtask(item, subtaskInput)"><i
+                                    class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
                     <div *ngIf="item.subtasks" class="mb-3">
-                        <div *ngFor="let subtask of item.subtasks; let j = index" (click)="checkTask(subtask)" class="checkbox-wrapper mt-1 col-11 ms-auto">
-                            <input type="checkbox" [checked]="item.subtasks[j].done" id='subtasks{{j}}' class="inp-cbx" />
+                        <div *ngFor="let subtask of item.subtasks; let j = index" (click)="checkTask(subtask)"
+                            class="checkbox-wrapper mt-1 col-11 ms-auto">
+                            <input type="checkbox" [checked]="item.subtasks[j].done" id='subtasks{{j}}'
+                                class="inp-cbx" />
                             <label for="cbx" class="cbx">
                                 <span>
                                     <svg viewBox="0 0 12 10" height="10px" width="12px">

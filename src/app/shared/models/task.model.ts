@@ -3,7 +3,7 @@ export interface Task {
     text: string;
     done: boolean;
     createdAt: Date;
-    subtasks?: Task[];
+    subtasks: Task[];
 
     addSubtask: boolean;
 }

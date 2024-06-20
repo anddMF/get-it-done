@@ -12,14 +12,14 @@ export class HomeComponent {
 
   //TODO: convert DATE to localtime
   subtasks: Task[] = [
-    this.createTask('SUBTASK 01', 1),
-    this.createTask('SUBTASK 02', 2)
+    this.createTask('SUBTASK 01', 1, []),
+    this.createTask('SUBTASK 02', 2, [])
   ]
 
   tasks: Task[] = [
-    this.createTask('TESTE 01', 1),
+    this.createTask('TESTE 01', 1, []),
     this.createTask('TESTE 02', 2, this.subtasks),
-    this.createTask('TESTE 03', 3)
+    this.createTask('TESTE 03', 3, [])
   ]
 
   checkTask(task: Task) {
@@ -28,18 +28,18 @@ export class HomeComponent {
   
   addTask(text: string) {
     if(text)
-      this.createTask(text, this.tasks.length + 1)
+      this.createTask(text, this.tasks.length + 1, [])
 
     this.taskInput = '';
   }
 
   addSubtask(task: Task, text: string) {
     if(text) {
-      task.subtasks?.push(this.createTask(text, task.subtasks.length + 1))
+      task.subtasks?.push(this.createTask(text, task.subtasks.length + 1, []))
     }
   }
 
-  private createTask(text: string, id: number, subtasks?: Task[]): Task {
+  private createTask(text: string, id: number, subtasks: Task[]): Task {
     return {id, text, done: false, createdAt: new Date(), addSubtask: false, subtasks}
   }
 }
