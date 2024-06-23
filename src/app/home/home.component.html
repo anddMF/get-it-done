@@ -13,8 +13,8 @@
                 <input type="text" [(ngModel)]="taskInput" class="form-control custom-input" placeholder="Add new task"
                     (keyup.enter)="addTask(taskInput)">
                 <div class="input-group-append">
-                    <button class="btn add-button" (click)="addTask(taskInput)"><i
-                            class="fa-solid fa-plus"></i></button>
+                    <button class="btn add-button" (click)="addTask(taskInput)">
+                        <i class="fa-solid fa-plus"></i></button>
                 </div>
             </div>
 
@@ -34,12 +34,11 @@
                     </div>
                     <button class="btn btn-primary ms-auto" (click)="item.addSubtask = !item.addSubtask">test</button>
                     <div *ngIf="item.addSubtask" class="input-group">
-                        <input type="text" [(ngModel)]="subtaskInput"
-                            class="form-control custom-input" placeholder="Add subtask"
-                            (keyup.enter)="addSubtask(item, subtaskInput)">
+                        <input type="text" #subtaskInput class="form-control custom-input"
+                            placeholder="Add subtask" (keyup.enter)="addSubtask(item, subtaskInput.value)">
                         <div class="input-group-append">
-                            <button class="btn add-button" (click)="addSubtask(item, subtaskInput)"><i
-                                    class="fa-solid fa-plus"></i></button>
+                            <button class="btn add-button" (click)="addSubtask(item, subtaskInput.value)">
+                                <i class="fa-solid fa-plus"></i></button>
                         </div>
                     </div>
                     <div *ngIf="item.subtasks" class="mb-3">

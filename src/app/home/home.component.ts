@@ -8,7 +8,6 @@ import { Task } from '../shared/models/task.model';
 export class HomeComponent {
   taskInput: string = '';
   showInputSubtask: boolean = false;
-  subtaskInput: string = '';
 
   //TODO: convert DATE to localtime
   subtasks: Task[] = [
