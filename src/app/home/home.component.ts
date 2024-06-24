@@ -8,6 +8,7 @@ import { Task } from '../shared/models/task.model';
 export class HomeComponent {
   taskInput: string = '';
   showInputSubtask: boolean = false;
+  hover: boolean = false
 
   //TODO: convert DATE to localtime
   subtasks: Task[] = [
@@ -43,6 +44,6 @@ export class HomeComponent {
   }
 
   private createTask(text: string, id: number, subtasks: Task[], done: boolean = false): Task {
-    return {id, text, done, createdAt: new Date(), addSubtask: false, subtasks}
+    return {id, text, done, createdAt: new Date(), addSubtask: false, subtasks, hover: false}
   }
 }

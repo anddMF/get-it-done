@@ -20,7 +20,7 @@
 
             <div class="tasks-container col-12 mt-3">
                 <div *ngFor="let item of tasks; let i = index" class="mb-2 ">
-                    <div class="checkbox-wrapper mt-1">
+                    <div class="checkbox-wrapper mt-1" (mouseenter)="item.hover = true" (mouseleave)="item.hover = false">
                         <input type="checkbox" (click)="checkTask(item)" [checked]="tasks[i].done" id='tasks{{i}}'
                             class="inp-cbx" />
                         <label for="cbx" class="cbx" (click)="checkTask(item)">
@@ -32,13 +32,15 @@
                             <span class="text-white" [ngClass]="{'task-done': item.done}">{{ item.text }}</span>
                         </label>
 
-                        <i class="fa-solid fa-trash-can i-remove-task me-3 mt-1" (click)="removeTask(tasks, i)">
-                        </i>
-                        <i class="fa-solid fa-plus i-add-subtask me-3 mt-1"
-                            (click)="item.addSubtask = !item.addSubtask">
-                        </i>
-                        <i class="fa-solid fa-pen i-edit-task me-3 mt-1">
-                        </i>
+                        <div class="i-container" *ngIf="item.hover">
+                            <i class="fa-solid fa-pen i-edit-task me-3 mt-1">
+                            </i>
+                            <i class="fa-solid fa-plus i-add-subtask me-3 mt-1"
+                                (click)="item.addSubtask = !item.addSubtask">
+                            </i>
+                            <i class="fa-solid fa-trash-can i-remove-task me-3 mt-1" (click)="removeTask(tasks, i)">
+                            </i>
+                        </div>
                     </div>
 
                     <div *ngIf="item.addSubtask" class="input-group">
@@ -53,7 +55,7 @@
 
                     <div *ngIf="item.subtasks" class="mb-3">
                         <div *ngFor="let subtask of item.subtasks; let j = index" (click)="checkTask(subtask)"
-                            class="checkbox-wrapper mt-1 col-11 ms-auto">
+                            class="checkbox-wrapper mt-1 col-11 ms-auto" (mouseenter)="subtask.hover = true" (mouseleave)="subtask.hover = false">
                             <input type="checkbox" [checked]="item.subtasks[j].done" id='subtasks{{j}}'
                                 class="inp-cbx" />
                             <label for="cbx" class="cbx">
@@ -66,10 +68,13 @@
                                     {{ subtask.text}}
                                 </span>
                             </label>
-                            <i class="fa-solid fa-trash-can i-remove-task me-3 mt-1" (click)="removeTask(item.subtasks, j)">
-                            </i>
-                            <i class="fa-solid fa-pen i-edit-task me-3 mt-1">
-                            </i>
+                            <div class="i-container" *ngIf="subtask.hover">
+                                <i class="fa-solid fa-pen fa-xs i-edit-task me-3 mt-1">
+                                </i>
+                                <i class="fa-solid fa-trash-can fa-xs i-remove-task me-3 mt-1"
+                                    (click)="removeTask(item.subtasks, j)">
+                                </i>
+                            </div>
                         </div>
                     </div>
 

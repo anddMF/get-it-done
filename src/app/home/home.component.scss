@@ -31,7 +31,6 @@
 
 .i-add-subtask {
   color: #65B4FD;
-  float: right;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
 }
@@ -42,7 +41,6 @@
 
 .i-remove-task {
   color: #FF7272;
-  float: right;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
 }
@@ -53,9 +51,13 @@
 
 .i-edit-task {
   color: white;
-  float: right;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
+}
+
+.i-container {
+  margin-left: 3rem;
+  display: inline-block !important;
 }
 
 .task-done {

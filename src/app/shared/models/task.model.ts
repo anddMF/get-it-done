@@ -6,4 +6,5 @@ export interface Task {
     subtasks: Task[];
 
     addSubtask: boolean;
+    hover: boolean;
 }
