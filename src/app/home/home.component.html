@@ -19,10 +19,10 @@
             </div>
 
             <div class="tasks-container col-12 mt-3">
-                <div *ngFor="let item of tasks; let i = index" class="mb-2">
-                    <div class="checkbox-wrapper mt-1" (click)="checkTask(item)">
-                        <input type="checkbox" [checked]="tasks[i].done" id='tasks{{i}}' class="inp-cbx" />
-                        <label for="cbx" class="cbx">
+                <div *ngFor="let item of tasks; let i = index" class="mb-2 ">
+                    <div class="checkbox-wrapper mt-1">
+                        <input type="checkbox" (click)="checkTask(item)" [checked]="tasks[i].done" id='tasks{{i}}' class="inp-cbx" />
+                        <label for="cbx" class="cbx" (click)="checkTask(item)">
                             <span>
                                 <svg viewBox="0 0 12 10" height="10px" width="12px">
                                     <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
@@ -30,17 +30,27 @@
                             </span>
                             <span class="text-white">{{ item.text }}</span>
                         </label>
-
+                        
+                        <i class="fa-solid fa-trash-can i-remove-task me-3"
+                            (click)="item.addSubtask = !item.addSubtask">
+                        </i>
+                        <i class="fa-solid fa-plus i-add-subtask me-3"
+                            (click)="item.addSubtask = !item.addSubtask">
+                        </i>
+                        <i class="fa-solid fa-pen i-edit-task me-3"
+                            (click)="item.addSubtask = !item.addSubtask">
+                        </i>
                     </div>
-                    <button class="btn btn-primary ms-auto" (click)="item.addSubtask = !item.addSubtask">test</button>
+
                     <div *ngIf="item.addSubtask" class="input-group">
-                        <input type="text" #subtaskInput class="form-control custom-input"
-                            placeholder="Add subtask" (keyup.enter)="addSubtask(item, subtaskInput.value)">
+                        <input type="text" #subtaskInput class="form-control custom-input" placeholder="Add subtask"
+                            (keyup.enter)="addSubtask(item, subtaskInput.value)">
                         <div class="input-group-append">
                             <button class="btn add-button" (click)="addSubtask(item, subtaskInput.value)">
                                 <i class="fa-solid fa-plus"></i></button>
                         </div>
                     </div>
+
                     <div *ngIf="item.subtasks" class="mb-3">
                         <div *ngFor="let subtask of item.subtasks; let j = index" (click)="checkTask(subtask)"
                             class="checkbox-wrapper mt-1 col-11 ms-auto">
@@ -56,6 +66,7 @@
                             </label>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

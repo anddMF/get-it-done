@@ -29,6 +29,24 @@
   background-color: var(--accent-color);
 }
 
+.i-add-subtask {
+  color: #65B4FD;
+  float: right;
+  
+}
+
+.i-remove-task {
+  color: #FF7272;
+  float: right;
+
+}
+
+.i-edit-task {
+  color: white;
+  float: right;
+
+}
+
 ::placeholder {
     color: #BBBBBB;
     opacity: 1;
@@ -80,7 +98,6 @@
   width: 50%;
   height: 50%;
   background: #506eec;
-  // background: #506eec;
   display: block;
   transform: scale(0);
   opacity: 1;
