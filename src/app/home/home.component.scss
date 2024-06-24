@@ -32,31 +32,51 @@
 .i-add-subtask {
   color: #65B4FD;
   float: right;
-  
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.i-add-subtask:hover {
+  color: #fd2d9f;
 }
 
 .i-remove-task {
   color: #FF7272;
   float: right;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
 
+.i-remove-task:hover {
+  color: #fd2d9f;
 }
 
 .i-edit-task {
   color: white;
   float: right;
-
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
 }
+
+.task-done {
+  color: var(--green-1) !important;
+  font-weight: 600;
+} 
 
 ::placeholder {
     color: #BBBBBB;
     opacity: 1;
 }
 
+.checkbox-wrapper:hover {
+  background-color: #0E0D34;
+  height: 100%;
+  
+}
 .checkbox-wrapper input[type="checkbox"] {
   display: none;
   visibility: hidden;
 }
-
 .checkbox-wrapper .cbx {
   margin: auto;
   -webkit-user-select: none;
@@ -67,6 +87,7 @@
   display: inline-block;
   vertical-align: middle;
   transform: translate3d(0, 0, 0);
+  transition: color 0.4s ease-in-out, font-weight 0.4s ease-in-out;
 }
 .checkbox-wrapper .cbx span:first-child {
   position: relative;
@@ -97,7 +118,7 @@
   content: "";
   width: 50%;
   height: 50%;
-  background: #506eec;
+  background: var(--green-1);
   display: block;
   transform: scale(0);
   opacity: 1;
@@ -107,12 +128,12 @@
   padding-left: 8px;
 }
 .checkbox-wrapper .cbx:hover span:first-child {
-  border-color: #506eec;
+  border-color: var(--green-1);
 }
 
 .checkbox-wrapper .inp-cbx:checked + .cbx span:first-child {
-  background: #506eec;
-  border-color: #506eec;
+  background: var(--green-1);
+  border-color: var(--green-1);
   animation: wave 0.4s ease;
 }
 .checkbox-wrapper .inp-cbx:checked + .cbx span:first-child svg {

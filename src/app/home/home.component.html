@@ -28,17 +28,15 @@
                                     <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                 </svg>
                             </span>
-                            <span class="text-white">{{ item.text }}</span>
+                            <span class="text-white" [ngClass]="{'task-done': item.done}">{{ item.text }}</span>
                         </label>
                         
-                        <i class="fa-solid fa-trash-can i-remove-task me-3"
+                        <i class="fa-solid fa-trash-can i-remove-task me-3 mt-1">
+                        </i>
+                        <i class="fa-solid fa-plus i-add-subtask me-3 mt-1"
                             (click)="item.addSubtask = !item.addSubtask">
                         </i>
-                        <i class="fa-solid fa-plus i-add-subtask me-3"
-                            (click)="item.addSubtask = !item.addSubtask">
-                        </i>
-                        <i class="fa-solid fa-pen i-edit-task me-3"
-                            (click)="item.addSubtask = !item.addSubtask">
+                        <i class="fa-solid fa-pen i-edit-task me-3 mt-1">
                         </i>
                     </div>
 
@@ -47,7 +45,8 @@
                             (keyup.enter)="addSubtask(item, subtaskInput.value)">
                         <div class="input-group-append">
                             <button class="btn add-button" (click)="addSubtask(item, subtaskInput.value)">
-                                <i class="fa-solid fa-plus"></i></button>
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
                         </div>
                     </div>
 
@@ -62,7 +61,7 @@
                                         <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                     </svg>
                                 </span>
-                                <span class="text-white">{{ subtask.text }}</span>
+                                <span class="text-white"  [ngClass]="{'task-done': subtask.done}">{{ subtask.text }}</span>
                             </label>
                         </div>
                     </div>
