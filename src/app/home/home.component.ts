@@ -38,6 +38,10 @@ export class HomeComponent {
     }
   }
 
+  removeTask(tasks: Task[], index: number){
+    tasks.splice(index, 1)
+  }
+
   private createTask(text: string, id: number, subtasks: Task[], done: boolean = false): Task {
     return {id, text, done, createdAt: new Date(), addSubtask: false, subtasks}
   }

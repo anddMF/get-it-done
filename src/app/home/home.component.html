@@ -21,7 +21,8 @@
             <div class="tasks-container col-12 mt-3">
                 <div *ngFor="let item of tasks; let i = index" class="mb-2 ">
                     <div class="checkbox-wrapper mt-1">
-                        <input type="checkbox" (click)="checkTask(item)" [checked]="tasks[i].done" id='tasks{{i}}' class="inp-cbx" />
+                        <input type="checkbox" (click)="checkTask(item)" [checked]="tasks[i].done" id='tasks{{i}}'
+                            class="inp-cbx" />
                         <label for="cbx" class="cbx" (click)="checkTask(item)">
                             <span>
                                 <svg viewBox="0 0 12 10" height="10px" width="12px">
@@ -30,8 +31,8 @@
                             </span>
                             <span class="text-white" [ngClass]="{'task-done': item.done}">{{ item.text }}</span>
                         </label>
-                        
-                        <i class="fa-solid fa-trash-can i-remove-task me-3 mt-1">
+
+                        <i class="fa-solid fa-trash-can i-remove-task me-3 mt-1" (click)="removeTask(tasks, i)">
                         </i>
                         <i class="fa-solid fa-plus i-add-subtask me-3 mt-1"
                             (click)="item.addSubtask = !item.addSubtask">
@@ -61,8 +62,14 @@
                                         <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                     </svg>
                                 </span>
-                                <span class="text-white"  [ngClass]="{'task-done': subtask.done}">{{ subtask.text }}</span>
+                                <span class="text-white" [ngClass]="{'task-done': subtask.done}">
+                                    {{ subtask.text}}
+                                </span>
                             </label>
+                            <i class="fa-solid fa-trash-can i-remove-task me-3 mt-1" (click)="removeTask(item.subtasks, j)">
+                            </i>
+                            <i class="fa-solid fa-pen i-edit-task me-3 mt-1">
+                            </i>
                         </div>
                     </div>
 
