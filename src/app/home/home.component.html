@@ -14,13 +14,14 @@
                     (keyup.enter)="addTask(taskInput)">
                 <div class="input-group-append">
                     <button class="btn add-button" (click)="addTask(taskInput)">
-                        <i class="fa-solid fa-plus"></i></button>
+                        <i class="bi bi-plus-lg"></i></button>
                 </div>
             </div>
 
             <div class="tasks-container col-12 mt-3">
                 <div *ngFor="let item of tasks; let i = index" class="mb-2 ">
-                    <div class="checkbox-wrapper mt-1" (mouseenter)="item.hover = true" (mouseleave)="item.hover = false">
+                    <div class="checkbox-wrapper mt-1" (mouseenter)="item.hover = true"
+                        (mouseleave)="item.hover = false">
                         <input type="checkbox" (click)="checkTask(item)" [checked]="tasks[i].done" id='tasks{{i}}'
                             class="inp-cbx" />
                         <label for="cbx" class="cbx" (click)="checkTask(item)">
@@ -32,13 +33,13 @@
                             <span class="text-white" [ngClass]="{'task-done': item.done}">{{ item.text }}</span>
                         </label>
 
-                        <div class="i-container" *ngIf="item.hover">
-                            <i class="fa-solid fa-pen i-edit-task me-3 mt-1">
+                        <div class="i-container">
+                            <i class="bi bi-pencil-fill i-edit-task me-3 mt-1">
                             </i>
-                            <i class="fa-solid fa-plus i-add-subtask me-3 mt-1"
+                            <i class="bi bi-plus-lg i-add-subtask me-3 mt-1"
                                 (click)="item.addSubtask = !item.addSubtask">
                             </i>
-                            <i class="fa-solid fa-trash-can i-remove-task me-3 mt-1" (click)="removeTask(tasks, i)">
+                            <i class="bi bi-x-circle-fill i-remove-task me-3 mt-1" (click)="removeTask(tasks, i)">
                             </i>
                         </div>
                     </div>
@@ -48,16 +49,20 @@
                             (keyup.enter)="addSubtask(item, subtaskInput.value)">
                         <div class="input-group-append">
                             <button class="btn add-button" (click)="addSubtask(item, subtaskInput.value)">
-                                <i class="fa-solid fa-plus"></i>
+                                <i class="bi bi-plus-lg"></i>
                             </button>
                         </div>
                     </div>
 
-                    <div *ngIf="item.subtasks" class="mb-3">
+                    <div *ngIf="item.subtasks" class="mb-3 subtask-container">
                         <div *ngFor="let subtask of item.subtasks; let j = index" (click)="checkTask(subtask)"
-                            class="checkbox-wrapper mt-1 col-11 ms-auto" (mouseenter)="subtask.hover = true" (mouseleave)="subtask.hover = false">
+                            class="checkbox-wrapper mt-1 col-11 ms-auto" (mouseenter)="subtask.hover = true"
+                            (mouseleave)="subtask.hover = false">
+                            <i class="bi bi-arrow-return-right text-white me-2"></i>
+
                             <input type="checkbox" [checked]="item.subtasks[j].done" id='subtasks{{j}}'
                                 class="inp-cbx" />
+
                             <label for="cbx" class="cbx">
                                 <span>
                                     <svg viewBox="0 0 12 10" height="10px" width="12px">
@@ -68,10 +73,11 @@
                                     {{ subtask.text}}
                                 </span>
                             </label>
+
                             <div class="i-container" *ngIf="subtask.hover">
-                                <i class="fa-solid fa-pen fa-xs i-edit-task me-3 mt-1">
+                                <i class="bi bi-pencil-fill i-edit-task me-3 mt-1">
                                 </i>
-                                <i class="fa-solid fa-trash-can fa-xs i-remove-task me-3 mt-1"
+                                <i class="bi bi-trash-fill i-remove-task me-3 mt-1"
                                     (click)="removeTask(item.subtasks, j)">
                                 </i>
                             </div>

@@ -1,12 +1,13 @@
 .custom-input {
-    background-color: #faebd700;
-    color: white;
-    border-width: 2px 0 2px 2px;
-    border-color: #EEEEEE;
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  background-color: #faebd700;
+  color: white;
+  border-width: 2px 0 2px 2px;
+  border-color: #EBEBEB;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.custom-input:focus, .custom-input:hover {
+.custom-input:focus,
+.custom-input:hover {
   background-color: #0000002c;
   color: white;
   outline: none !important;
@@ -63,44 +64,52 @@
 .task-done {
   color: var(--green-1) !important;
   font-weight: 600;
-} 
+}
+
+.subtask-container {
+  font-size: 0.88rem !important;
+}
 
 ::placeholder {
-    color: #BBBBBB;
-    opacity: 1;
+  color: #BBBBBB;
+  opacity: 1;
 }
 
 .checkbox-wrapper:hover {
   background-color: #0E0D34;
   height: 100%;
-  
 }
+
 .checkbox-wrapper input[type="checkbox"] {
   display: none;
   visibility: hidden;
 }
+
 .checkbox-wrapper .cbx {
   margin: auto;
   -webkit-user-select: none;
   user-select: none;
   cursor: pointer;
 }
+
 .checkbox-wrapper .cbx span {
   display: inline-block;
   vertical-align: middle;
   transform: translate3d(0, 0, 0);
   transition: color 0.4s ease-in-out, font-weight 0.4s ease-in-out;
 }
+
 .checkbox-wrapper .cbx span:first-child {
   position: relative;
-  width: 18px;
-  height: 18px;
-  border-radius: 3px;
+  width: 21px;
+  height: 21px;
+  border-radius: 6px;
   transform: scale(1);
   vertical-align: middle;
-  border: 1px solid #9098a9;
+  border: 2px solid #EBEBEB;
   transition: all 0.2s ease;
 }
+
 .checkbox-wrapper .cbx span:first-child svg {
   position: absolute;
   top: 3px;
@@ -116,6 +125,7 @@
   transition-delay: 0.1s;
   transform: translate3d(0, 0, 0);
 }
+
 .checkbox-wrapper .cbx span:first-child:before {
   content: "";
   width: 50%;
@@ -126,22 +136,26 @@
   opacity: 1;
   border-radius: 50%;
 }
+
 .checkbox-wrapper .cbx span:last-child {
   padding-left: 8px;
 }
+
 .checkbox-wrapper .cbx:hover span:first-child {
   border-color: var(--green-1);
 }
 
-.checkbox-wrapper .inp-cbx:checked + .cbx span:first-child {
+.checkbox-wrapper .inp-cbx:checked+.cbx span:first-child {
   background: var(--green-1);
   border-color: var(--green-1);
   animation: wave 0.4s ease;
 }
-.checkbox-wrapper .inp-cbx:checked + .cbx span:first-child svg {
+
+.checkbox-wrapper .inp-cbx:checked+.cbx span:first-child svg {
   stroke-dashoffset: 0;
 }
-.checkbox-wrapper .inp-cbx:checked + .cbx span:first-child:before {
+
+.checkbox-wrapper .inp-cbx:checked+.cbx span:first-child:before {
   transform: scale(3.5);
   opacity: 0;
   transition: all 0.6s ease;

@@ -14,13 +14,13 @@ export class HomeComponent {
   subtasks: Task[] = [
     this.createTask('SUBTASK 01', 1, []),
     this.createTask('SUBTASK 02', 2, [], true)
-  ]
+  ];
 
   tasks: Task[] = [
     this.createTask('TESTE 01', 1, [], true),
     this.createTask('TESTE 02', 2, this.subtasks),
     this.createTask('TESTE 03', 3, [])
-  ]
+  ];
 
   checkTask(task: Task) {
     task.done = !task.done;
@@ -28,7 +28,7 @@ export class HomeComponent {
   
   addTask(text: string) {
     if(text)
-      this.createTask(text, this.tasks.length + 1, [])
+      this.tasks.push(this.createTask(text, this.tasks.length + 1, []))
 
     this.taskInput = '';
   }
