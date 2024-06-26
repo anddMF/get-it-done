@@ -166,3 +166,23 @@
     transform: scale(0.6);
   }
 }
+
+.bi-three-dots-vertical {
+  cursor: pointer;
+  color: white;
+}
+
+.i-container .context-menu {
+  visibility: hidden;
+  background-color: #26235D;
+  color: #fff;
+  text-align: start;
+  border-radius: 6px;
+ 
+  position: absolute;
+  z-index: 999;
+}
+
+.i-container:hover .context-menu {
+  visibility: visible;
+}
