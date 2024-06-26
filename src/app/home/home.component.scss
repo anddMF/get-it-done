@@ -64,6 +64,15 @@
 .task-done {
   color: var(--green-1) !important;
   font-weight: 600;
+  text-decoration: line-through;
+}
+
+.title-done {
+  color: var(--green-1) !important;
+  // font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  display: inline-block;
 }
 
 .subtask-container {

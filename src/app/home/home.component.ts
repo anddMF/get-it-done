@@ -12,14 +12,14 @@ export class HomeComponent {
 
   //TODO: convert DATE to localtime
   subtasks: Task[] = [
-    this.createTask('SUBTASK 01', 1, []),
-    this.createTask('SUBTASK 02', 2, [], true)
+    this.createTask('Form F234', 1, []),
+    this.createTask('Passport copy', 2, [], true)
   ];
 
   tasks: Task[] = [
-    this.createTask('TESTE 01', 1, [], true),
-    this.createTask('TESTE 02', 2, this.subtasks),
-    this.createTask('TESTE 03', 3, [])
+    this.createTask('Send email to Robert', 1, [], true),
+    this.createTask('Finish Mary documentation', 2, this.subtasks),
+    this.createTask('Make dinner', 3, [])
   ];
 
   checkTask(task: Task) {
