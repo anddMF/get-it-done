@@ -16,8 +16,7 @@
 
             <div class="tasks-container col-12 mt-3">
                 <div *ngFor="let item of tasks; let i = index" class="mb-2 ">
-                    <div class="checkbox-wrapper mt-1" (mouseenter)="item.hover = true"
-                        (mouseleave)="item.hover = false">
+                    <div class="checkbox-wrapper mt-1">
                         <input type="checkbox" (click)="checkTask(item)" [checked]="tasks[i].done" id='tasks{{i}}'
                             class="inp-cbx" />
                         <label for="cbx" class="cbx" (click)="checkTask(item)">
@@ -93,7 +92,7 @@
                                         </i> Subtask
                                     </div>
     
-                                    <div class="c-pointer i-remove-task mt-1" (click)="removeTask(tasks, i)">
+                                    <div class="c-pointer i-remove-task mt-1" (click)="removeTask(item.subtasks, j)">
                                         <i class="bi bi-trash-fill mt-1 me-1">
                                         </i> Delete
                                     </div>
