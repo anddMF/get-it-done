@@ -1,19 +1,26 @@
+.main-container {
+  border-radius: var(--default-radius) !important;
+  margin-top: 3rem !important;
+  padding: 1.5rem !important;
+  background-color: var(--grey-1-trans);
+}
+
 .custom-input {
   background-color: #faebd700;
   color: white;
   border-width: 2px 0 2px 2px;
   border-color: #EBEBEB;
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
 
-.custom-input:focus,
-.custom-input:hover {
-  background-color: #0000002c;
-  color: white;
-  outline: none !important;
-  box-shadow: none;
-  border-color: #EEEEEE;
-  box-shadow: 0 0.5rem 1rem #00000026 !important;
+  &:focus,
+  &:hover {
+    background-color: #0000002c;
+    color: white;
+    outline: none !important;
+    box-shadow: none;
+    border-color: #EEEEEE;
+    box-shadow: 0 0.5rem 1rem #00000026 !important;
+  }
 }
 
 .add-button {
@@ -24,30 +31,30 @@
   color: white;
   background-color: #dadada38;
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
 
-.add-button:hover {
-  background-color: var(--accent-color);
+  &:hover {
+    background-color: var(--accent-color);
+  }
 }
 
 .i-add-subtask {
   color: #65B4FD;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
-}
 
-.i-add-subtask:hover {
-  color: #fd2d9f;
+  &:hover {
+    color: #fd2d9f;
+  }
 }
 
 .i-remove-task {
   color: #FF7272;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
-}
 
-.i-remove-task:hover {
-  color: #fd2d9f;
+  &:hover {
+    color: #fd2d9f;
+  }
 }
 
 .i-edit-task {
@@ -75,7 +82,7 @@
   display: inline-block;
 }
 
-.subtask-container {
+.subtask-font {
   font-size: 0.88rem !important;
 }
 
@@ -181,7 +188,7 @@
   color: #fff;
   text-align: start;
   border-radius: 6px;
- 
+
   position: absolute;
   z-index: 999;
 }

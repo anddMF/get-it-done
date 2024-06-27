@@ -4,7 +4,7 @@
         </h1>
     </div>
 
-    <div class="col-12 p-5 bg-grey-trans mt-5 rounded">
+    <div class="col-12 main-container">
         <div class="col-md-6 mx-auto">
             <div class="input-group">
                 <input type="text" [(ngModel)]="taskInput" class="form-control custom-input" placeholder="Add new task"
@@ -49,9 +49,9 @@
 
                     </div>
 
-                    <div *ngIf="item.addSubtask" class="input-group">
+                    <div *ngIf="item.addSubtask" class="input-group mt-1">
                         <i class="bi bi-arrow-return-right text-white me-2"></i>
-                        <input type="text" #subtaskInput class="form-control custom-input" placeholder="Add subtask"
+                        <input type="text" #subtaskInput class="form-control custom-input subtask-font" placeholder="Add subtask"
                             (keyup.enter)="addSubtask(item, subtaskInput.value)">
                         <div class="input-group-append">
                             <button class="btn add-button" (click)="addSubtask(item, subtaskInput.value)">
@@ -63,7 +63,7 @@
                         </div>
                     </div>
 
-                    <div *ngIf="item.subtasks" class="mb-3 subtask-container">
+                    <div *ngIf="item.subtasks" class="mb-3 subtask-font">
                         <div *ngFor="let subtask of item.subtasks; let j = index"
                             class="checkbox-wrapper mt-1 col-11 ms-auto">
                             <i class="bi bi-arrow-return-right text-white me-2"></i>
