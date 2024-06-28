@@ -10,7 +10,7 @@
                 <input type="text" [(ngModel)]="taskInput" class="form-control custom-input" placeholder="Add new task"
                     (keyup.enter)="addTask(taskInput)">
                 <div class="input-group-append">
-                    <button class="btn add-button" (click)="addTask(taskInput)">
+                    <button class="btn append-button" (click)="addTask(taskInput)">
                         <i class="bi bi-plus-lg"></i></button>
                 </div>
             </div>
@@ -28,21 +28,21 @@
                             </span>
                             <span class="text-white" [ngClass]="{'task-done': item.done}">{{ item.text }}</span>
                         </label>
+                        <input *ngIf="item.editable" type="text" #edit [(ngModel)]="item.text" class="edit-input">
+                        <!-- CONTEXT MENU -->
                         <div class="i-container ms-3">
                             <i class="bi bi-three-dots-vertical"></i>
                             <div class="context-menu p-2">
-                                <div class="c-pointer">
+                                <div class="c-pointer" (click)="startEditTask(item)">
                                     <i class="bi bi-pencil-fill i-edit-task mt-1 me-1"></i> Edit
                                 </div>
 
                                 <div class="c-pointer i-add-subtask mt-1" (click)="item.addSubtask = !item.addSubtask">
-                                    <i class="bi bi-plus-lg mt-1 me-1">
-                                    </i> Subtask
+                                    <i class="bi bi-plus-lg mt-1 me-1"></i> Subtask
                                 </div>
 
                                 <div class="c-pointer i-remove-task mt-1" (click)="removeTask(tasks, i)">
-                                    <i class="bi bi-trash-fill mt-1 me-1">
-                                    </i> Delete
+                                    <i class="bi bi-trash-fill mt-1 me-1"></i> Delete
                                 </div>
                             </div>
                         </div>
@@ -51,18 +51,19 @@
 
                     <div *ngIf="item.addSubtask" class="input-group mt-1">
                         <i class="bi bi-arrow-return-right text-white me-2"></i>
-                        <input type="text" #subtaskInput class="form-control custom-input subtask-font" placeholder="Add subtask"
-                            (keyup.enter)="addSubtask(item, subtaskInput.value)">
+                        <input type="text" #subtaskInput class="form-control custom-input subtask-font"
+                            placeholder="Add subtask" (keyup.enter)="addSubtask(item, subtaskInput.value)">
                         <div class="input-group-append">
-                            <button class="btn add-button" (click)="addSubtask(item, subtaskInput.value)">
+                            <button class="btn append-button-mid" (click)="addSubtask(item, subtaskInput.value)">
                                 <i class="bi bi-plus-lg"></i>
                             </button>
-                            <button class="btn add-button" (click)="item.addSubtask = !item.addSubtask">
+                            <button class="btn append-button" (click)="item.addSubtask = !item.addSubtask">
                                 <i class="bi bi-x-lg"></i>
                             </button>
                         </div>
                     </div>
 
+                    <!-- SUBTASKS CONTAINER -->
                     <div *ngIf="item.subtasks" class="mb-3 subtask-font">
                         <div *ngFor="let subtask of item.subtasks; let j = index"
                             class="checkbox-wrapper mt-1 col-11 ms-auto">
@@ -78,7 +79,7 @@
                                     </svg>
                                 </span>
                                 <span class="text-white" [ngClass]="{'task-done': subtask.done}">
-                                    {{ subtask.text}}
+                                    {{ subtask.text }}
                                 </span>
                             </label>
 

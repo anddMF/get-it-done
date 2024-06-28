@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Task } from '../shared/models/task.model';
 @Component({
   selector: 'app-home',
@@ -6,9 +6,9 @@ import { Task } from '../shared/models/task.model';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  @ViewChild('edit') editInput: ElementRef | undefined;
   taskInput: string = '';
   showInputSubtask: boolean = false;
-  hover: boolean = false
 
   //TODO: convert DATE to localtime
   subtasks: Task[] = [
@@ -43,7 +43,13 @@ export class HomeComponent {
     tasks.splice(index, 1)
   }
 
+  startEditTask(task: Task) {
+    task.editable = !task.editable;
+    if(task.editable)
+      this.editInput?.nativeElement.focus();
+  }
+
   private createTask(text: string, id: number, subtasks: Task[], done: boolean = false): Task {
-    return {id, text, done, createdAt: new Date(), addSubtask: false, subtasks, hover: false}
+    return {id, text, done, createdAt: new Date(), addSubtask: false, subtasks, editable: false}
   }
 }

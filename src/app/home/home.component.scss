@@ -23,7 +23,19 @@
   }
 }
 
-.add-button {
+.edit-input {
+  background-color: transparent; 
+  border-width: 0px 0px 2px 0px;
+  color: #d1d1d1;
+  font-style: italic;
+  border-color: var(--blue-2);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.append-button {
   border-width: 2px 2px 2px 0px !important;
   border-top-left-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
@@ -37,6 +49,18 @@
   }
 }
 
+.append-button-mid {
+  border-width: 2px 1px 2px 0px !important;
+  border-radius: 0px !important;
+  border-color: #EEEEEE;
+  color: white;
+  background-color: #dadada38;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--blue-2);
+  }
+}
 .i-add-subtask {
   color: #65B4FD;
   cursor: pointer;
