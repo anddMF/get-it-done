@@ -31,7 +31,7 @@
 
                         <!-- EDIT TASK INPUT -->
                         <div *ngIf="item.editable" class="edit-task">
-                            <input type="text" #edit [value]="item.text" class="ms-1" (keyup.enter)="updateTaskText(edit.value, item)">
+                            <input type="text" #edit [value]="item.text" class="ms-1" (keyup.escape)="changeEditableTask(item)" (keyup.enter)="updateTaskText(edit.value, item)">
                             <i class="bi bi-check-circle-fill me-2 ms-1" (click)="updateTaskText(edit.value, item)"></i>
                             <i class="bi bi-x-circle-fill" (click)="changeEditableTask(item)"></i>
                         </div>
@@ -60,7 +60,7 @@
                     <div *ngIf="item.addSubtask" class="input-group mt-1">
                         <i class="bi bi-arrow-return-right text-white me-2"></i>
                         <input type="text" #subtaskInput class="form-control custom-input subtask-input"
-                            placeholder="Add subtask" (keyup.enter)="addSubtask(item, subtaskInput.value)">
+                            placeholder="Add subtask" (keyup.escape)="item.addSubtask = !item.addSubtask" (keyup.enter)="addSubtask(item, subtaskInput.value)">
                         <div class="input-group-append">
                             <button class="btn append-button-mid" (click)="addSubtask(item, subtaskInput.value)">
                                 <i class="bi bi-plus-lg"></i>
