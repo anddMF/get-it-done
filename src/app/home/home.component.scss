@@ -48,11 +48,12 @@
     cursor: pointer;
   }
 }
+
 .append-button {
   border-width: 2px 2px 2px 0px !important;
   border-top-left-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
-  border-color: #EEEEEE;
+  border-color: #EEEEEE !important;
   color: white;
   background-color: #dadada38;
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -65,7 +66,7 @@
 .append-button-mid {
   border-width: 2px 1px 2px 0px !important;
   border-radius: 0px !important;
-  border-color: #EEEEEE;
+  border-color: #EEEEEE !important;
   color: white;
   background-color: #dadada38;
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -74,8 +75,9 @@
     background-color: var(--blue-2);
   }
 }
+
 .i-add-subtask {
-  color: #65B4FD;
+  color: var(--blue-2);
   cursor: pointer;
   transition: color 0.3s ease-in-out;
 
@@ -85,7 +87,7 @@
 }
 
 .i-remove-task {
-  color: #FF7272;
+  color: var(--red-1);
   cursor: pointer;
   transition: color 0.3s ease-in-out;
 
@@ -98,6 +100,10 @@
   color: white;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: #fd2d9f;
+  }
 }
 
 .i-container {
@@ -119,8 +125,15 @@
   display: inline-block;
 }
 
-.subtask-font {
+.subtask-input {
   font-size: 0.88rem !important;
+  border-top-left-radius: 6px !important;
+  border-bottom-left-radius: 6px !important;
+  // border-color: #BBBBBB !important;
+}
+
+.fw-bold {
+  font-weight: 500 !important;
 }
 
 ::placeholder {

@@ -31,17 +31,17 @@
 
                         <!-- EDIT TASK INPUT -->
                         <div *ngIf="item.editable" class="edit-task">
-                            <input type="text" #edit [value]="item.text" class="ms-1">
+                            <input type="text" #edit [value]="item.text" class="ms-1" (keyup.enter)="updateTaskText(edit.value, item)">
                             <i class="bi bi-check-circle-fill me-2 ms-1" (click)="updateTaskText(edit.value, item)"></i>
                             <i class="bi bi-x-circle-fill" (click)="changeEditableTask(item)"></i>
                         </div>
 
-                        <!-- CONTEXT MENU -->
-                        <div class="i-container ms-3">
+                        <!-- CONTEXT MENU TASK-->
+                        <div class="i-container fw-bold ms-3">
                             <i class="bi bi-three-dots-vertical"></i>
                             <div class="context-menu p-2">
-                                <div class="c-pointer" (click)="changeEditableTask(item)">
-                                    <i class="bi bi-pencil-fill i-edit-task mt-1 me-1"></i> Edit
+                                <div class="c-pointer i-edit-task" (click)="changeEditableTask(item)">
+                                    <i class="bi bi-pencil-fill mt-1 me-1"></i> Edit
                                 </div>
 
                                 <div class="c-pointer i-add-subtask mt-1" (click)="item.addSubtask = !item.addSubtask">
@@ -59,7 +59,7 @@
                     <!-- ADD SUBTASK INPUT -->
                     <div *ngIf="item.addSubtask" class="input-group mt-1">
                         <i class="bi bi-arrow-return-right text-white me-2"></i>
-                        <input type="text" #subtaskInput class="form-control custom-input subtask-font"
+                        <input type="text" #subtaskInput class="form-control custom-input subtask-input"
                             placeholder="Add subtask" (keyup.enter)="addSubtask(item, subtaskInput.value)">
                         <div class="input-group-append">
                             <button class="btn append-button-mid" (click)="addSubtask(item, subtaskInput.value)">
@@ -86,16 +86,23 @@
                                         <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                     </svg>
                                 </span>
-                                <span class="text-white" [ngClass]="{'task-done': subtask.done}">
+                                <span *ngIf="!subtask.editable" class="text-white" [ngClass]="{'task-done': subtask.done}">
                                     {{ subtask.text }}
                                 </span>
                             </label>
 
-                            <div class="i-container ms-3">
+                            <div *ngIf="subtask.editable" class="edit-task">
+                                <input type="text" #edit2 [value]="subtask.text" class="ms-1" (keyup.enter)="updateTaskText(edit2.value, subtask)">
+                                <i class="bi bi-check-circle-fill me-2 ms-1" (click)="updateTaskText(edit2.value, subtask)"></i>
+                                <i class="bi bi-x-circle-fill" (click)="changeEditableTask(subtask)"></i>
+                            </div>
+
+                            <!-- CONTEXT MENU SUBTASK-->
+                            <div class="i-container ms-3 fw-bold">
                                 <i class="bi bi-three-dots-vertical"></i>
                                 <div class="context-menu p-2">
-                                    <div class="c-pointer">
-                                        <i class="bi bi-pencil-fill i-edit-task mt-1 me-1"></i> Edit
+                                    <div class="c-pointer i-edit-task" (click)="changeEditableTask(subtask)">
+                                        <i class="bi bi-pencil-fill mt-1 me-1"></i> Edit
                                     </div>
 
                                     <div class="c-pointer i-remove-task mt-1" (click)="removeTask(item.subtasks, j)">
