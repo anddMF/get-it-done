@@ -23,18 +23,31 @@
   }
 }
 
-.edit-input {
-  background-color: transparent; 
-  border-width: 0px 0px 2px 0px;
-  color: #d1d1d1;
-  font-style: italic;
-  border-color: var(--blue-2);
+.edit-task {
+  display: inline-block;
+  input {
+    background-color: transparent; 
+    border-width: 0px 0px 2px 0px;
+    color: #d1d1d1;
+    font-style: italic;
+    border-color: var(--blue-2);
+  
+    &:focus {
+      outline: none;
+      border-color: var(--green-1);
+    }
+  }
 
-  &:focus {
-    outline: none;
+  .bi-x-circle-fill {
+    color: var(--red-1);
+    cursor: pointer;
+  }
+
+  .bi-check-circle-fill {
+    color: var(--green-1);
+    cursor: pointer;
   }
 }
-
 .append-button {
   border-width: 2px 2px 2px 0px !important;
   border-top-left-radius: 0px !important;
