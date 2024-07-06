@@ -82,7 +82,7 @@
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: #fd2d9f;
+    color: var(--accent-color-2);
   }
 }
 
@@ -92,7 +92,7 @@
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: #fd2d9f;
+    color: var(--accent-color-2);
   }
 }
 
@@ -102,7 +102,7 @@
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: #fd2d9f;
+    color: var(--accent-color-2);
   }
 }
 
