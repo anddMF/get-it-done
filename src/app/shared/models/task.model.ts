@@ -2,7 +2,7 @@ export interface Task {
     id: number;
     text: string;
     done: boolean;
-    createdAt: Date;
+    createdAt: string;
     subtasks: Task[];
 
     addSubtask: boolean;
