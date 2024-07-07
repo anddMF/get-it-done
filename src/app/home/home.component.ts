@@ -51,7 +51,7 @@ export class HomeComponent {
 
   addTask(text: string) {
     if (text)
-      this.tasks.push(this.createTask(text, this.tasks[this.tasks.length - 1].id + 1, []));
+      this.tasks.push(this.createTask(text, this.tasks.length > 0 ? this.tasks[this.tasks.length - 1].id + 1 : 1, []));
 
     this.taskInput = '';
     this.saveTasks();
@@ -59,7 +59,7 @@ export class HomeComponent {
 
   addSubtask(task: Task, text: string) {
     if (text) {
-      task.subtasks?.push(this.createTask(text, task.subtasks[task.subtasks.length - 1].id + 1, []));
+      task.subtasks?.push(this.createTask(text, task.subtasks.length > 0 ? task.subtasks[task.subtasks.length - 1].id + 1 : 1, []));
     }
     this.saveTasks();
   }
