@@ -14,6 +14,13 @@ export class HomeComponent {
 
   taskInput: string = '';
   showInputSubtask: boolean = false;
+  tasksDoneCounter: number = 0;
+  totalTasksCounter: number = 0;
+  oldTaskDoneCounter: number = 0;
+  oldTotalTasksCounter: number = 0;
+  usedHours: number = 0;
+  showMessage: boolean = false;
+  deletedTasksMessage: string = "TIME'S UP! ALL TASKS WERE DELETED.";
 
   subtasks: Task[] = [
     this.createTask('Form F234', 1, []),
@@ -27,21 +34,31 @@ export class HomeComponent {
   ];
 
   constructor() {
-
-    if (localStorage.getItem('dateCounter') === null) {
-      localStorage.setItem('dateCounter', JSON.stringify(moment().format()))
-    } else {
-      var dates = JSON.parse(localStorage.getItem('dateCounter') || '')
-      let hours = moment().diff(moment(dates), 'hours');
-      // TODO: add validation to show message and delete tasks after 24h
-    }
-
     if (localStorage.getItem('dataSource') === null) {
       localStorage.setItem('dataSource', JSON.stringify(this.tasks));
     } else {
       var storedArray = JSON.parse(localStorage.getItem('dataSource') || '');
       this.tasks = storedArray;
     }
+
+    if (localStorage.getItem('dateCounter') === null) {
+      localStorage.setItem('dateCounter', JSON.stringify(moment().format()));
+      this.usedHours = this.getHoursUsed();
+    } else {
+      this.usedHours = this.getHoursUsed();
+      if (this.usedHours > 24) {
+        this.showMessage = true;
+        this.tasksCounter();
+        this.oldTaskDoneCounter = this.tasksDoneCounter;
+        this.oldTotalTasksCounter = this.totalTasksCounter;
+        this.tasks = [];
+        this.saveTasks();
+        localStorage.setItem('dateCounter', JSON.stringify(moment().format()));
+        this.usedHours = this.getHoursUsed();
+      }
+    }
+
+    this.tasksCounter();
   }
 
   checkTask(task: Task) {
@@ -85,8 +102,20 @@ export class HomeComponent {
     }
   }
 
+  tasksCounter() {
+    this.totalTasksCounter = this.tasks.length;
+    this.tasksDoneCounter = this.tasks.filter(item => item.done === true).length;
+  }
+
   saveTasks() {
     localStorage.setItem('dataSource', JSON.stringify(this.tasks));
+    this.tasksCounter();
+  }
+
+  getHoursUsed(): number {
+    var dates = JSON.parse(localStorage.getItem('dateCounter') || '')
+    let hours = moment().diff(moment(dates), 'hours');
+    return hours;
   }
 
   private createTask(text: string, id: number, subtasks: Task[], done: boolean = false): Task {
