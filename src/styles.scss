@@ -65,6 +65,19 @@ body {
     cursor: pointer;
 }
 
-i { 
+i {
     align-self: center;
+}
+
+.row-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.text-white {
+    color: #e4e4e4 !important;
+}
+
+.text-grey {
+    color: #c0c0c0 !important;
 }

@@ -248,6 +248,17 @@
   visibility: visible;
 }
 
+.times-up-message {
+  color: var(--red-1);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.text-highlight {
+  text-decoration: underline;
+  font-weight: 500;
+}
+
 @keyframes wave {
   50% {
     transform: scale(0.6);

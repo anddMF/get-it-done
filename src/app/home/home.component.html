@@ -1,9 +1,12 @@
+<!-- TODO: split this into smaller components -->
 <div class="container">
     <div class="col-12 text-center text-white mt-5">
         <h1 class="poppins-light">GET IT <h1 class="title-done">DONE</h1>
         </h1>
 
-        <h6 class="col-md-6 mx-auto fw-light mt-5">Here, your tasks disappear after 24 hours, motivating you to complete them today. Add your tasks and commit to finishing them before the end of the day. Feel the satisfaction of a daily to-do list completed, make every day count!</h6>
+        <h6 class="col-md-6 mx-auto fw-light mt-5">Here, your tasks <b class="text-highlight">disappear after 24 hours</b>, motivating you to complete them today. Add your tasks and commit to finishing them before the end of the day. <b class="text-highlight"> Feel the satisfaction of a daily to-do list completed, make every day count! </b></h6>
+
+        <h3 class="mt-5 times-up-message" *ngIf="showMessage">{{deletedTasksMessage}} <br> you've completed {{oldTaskDoneCounter}}/{{oldTotalTasksCounter}} tasks</h3>
     </div>
 
     <div class="col-12 main-container">
@@ -15,6 +18,11 @@
                     <button class="btn append-button" (click)="addTask(taskInput)">
                         <i class="bi bi-plus-lg"></i></button>
                 </div>
+            </div>
+
+            <div class="row-flex text-grey mt-1">
+                <h6 class="text-end">completed: {{tasksDoneCounter}}/{{totalTasksCounter}}</h6>
+                <h6 class="ms-auto">{{usedHours}}h/24h</h6>
             </div>
 
             <div class="tasks-container col-12 mt-3">
