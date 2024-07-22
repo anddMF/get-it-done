@@ -22,16 +22,9 @@ export class HomeComponent {
   showMessage: boolean = false;
   deletedTasksMessage: string = "TIME'S UP! ALL TASKS WERE DELETED.";
 
-  subtasks: Task[] = [
-    this.createTask('Form F234', 1, []),
-    this.createTask('Passport copy', 2, [], true)
-  ];
+  subtasks: Task[] = [];
 
-  tasks: Task[] = [
-    this.createTask('Send email to Robert', 1, [], true),
-    this.createTask('Finish Mary documentation', 2, this.subtasks),
-    this.createTask('Make dinner', 3, [])
-  ];
+  tasks: Task[] = [];
 
   constructor() {
     if (localStorage.getItem('dataSource') === null) {
@@ -44,6 +37,7 @@ export class HomeComponent {
     if (localStorage.getItem('dateCounter') === null) {
       localStorage.setItem('dateCounter', JSON.stringify(moment().format()));
       this.usedHours = this.getHoursUsed();
+      this.generateInitialTasks();
     } else {
       this.usedHours = this.getHoursUsed();
       if (this.usedHours > 24) {
@@ -51,7 +45,7 @@ export class HomeComponent {
         this.tasksCounter();
         this.oldTaskDoneCounter = this.tasksDoneCounter;
         this.oldTotalTasksCounter = this.totalTasksCounter;
-        this.tasks = [];
+        this.generateInitialTasks();
         this.saveTasks();
         localStorage.setItem('dateCounter', JSON.stringify(moment().format()));
         this.usedHours = this.getHoursUsed();
@@ -120,5 +114,18 @@ export class HomeComponent {
 
   private createTask(text: string, id: number, subtasks: Task[], done: boolean = false): Task {
     return { id, text, done, createdAt: moment().format(), addSubtask: false, subtasks, editable: false }
+  }
+
+  private generateInitialTasks() {
+    this.subtasks = [
+      this.createTask('Form F234', 1, []),
+      this.createTask('Passport copy', 2, [], true)
+    ];
+  
+    this.tasks = [
+      this.createTask('Send email to Robert', 1, [], true),
+      this.createTask('Finish Mary documentation', 2, this.subtasks),
+      this.createTask('Make dinner', 3, [])
+    ];
   }
 }
