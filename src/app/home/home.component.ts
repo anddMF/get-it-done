@@ -127,5 +127,7 @@ export class HomeComponent {
       this.createTask('Finish Mary documentation', 2, this.subtasks),
       this.createTask('Make dinner', 3, [])
     ];
+
+    this.saveTasks();
   }
 }
