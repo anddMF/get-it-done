@@ -3,6 +3,7 @@
   margin-top: 3rem !important;
   padding: 1.5rem !important;
   background-color: var(--grey-1-trans);
+  overflow: auto;
 }
 
 .custom-input {
@@ -164,6 +165,7 @@
   vertical-align: middle;
   transform: translate3d(0, 0, 0);
   transition: color 0.4s ease-in-out, font-weight 0.4s ease-in-out;
+  overflow: hidden;
 }
 
 .checkbox-wrapper .cbx span:first-child {
