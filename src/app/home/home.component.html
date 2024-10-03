@@ -4,15 +4,15 @@
         <h1 class="poppins-light">GET IT <h1 class="title-done">DONE</h1>
         </h1>
 
-        <h6 class="col-md-6 mx-auto fw-light mt-5">Here, your tasks <b class="text-highlight">disappear after 24 hours</b>, motivating you to complete them today. Add your tasks and commit to finishing them before the end of the day. <b class="text-highlight"> Feel the satisfaction of a daily to-do list completed, make every day count! </b></h6>
+        <h5 class="col-md-6 mx-auto fw-light mt-5">Suas tarefas <b class="text-highlight">somem depois de 24h</b>, motivando você a tirar do papel e completar elas hoje.<br><br> <b class="text-highlight"> Tome controle da sua rotina e finalize seu TO-DO hoje, BORA! </b></h5>
 
-        <h3 class="mt-5 times-up-message" *ngIf="showMessage">{{deletedTasksMessage}} <br> you've completed {{oldTaskDoneCounter}}/{{oldTotalTasksCounter}} tasks</h3>
+        <h3 class="mt-5 times-up-message" *ngIf="showMessage">{{deletedTasksMessage}} <br> você completou {{oldTaskDoneCounter}}/{{oldTotalTasksCounter}} tarefas</h3>
     </div>
 
     <div class="col-12 main-container">
         <div class="col-md-6 mx-auto">
             <div class="input-group">
-                <input type="text" [(ngModel)]="taskInput" class="form-control custom-input" placeholder="Add new task"
+                <input type="text" [(ngModel)]="taskInput" class="form-control custom-input" placeholder="Add nova tarefa"
                     (keyup.enter)="addTask(taskInput)">
                 <div class="input-group-append">
                     <button class="btn append-button" (click)="addTask(taskInput)">
@@ -21,7 +21,7 @@
             </div>
 
             <div class="row-flex text-grey mt-1">
-                <h6 class="text-end">completed: {{tasksDoneCounter}}/{{totalTasksCounter}}</h6>
+                <h6 class="text-end">feitas: {{tasksDoneCounter}}/{{totalTasksCounter}}</h6>
                 <h6 class="ms-auto">{{usedHours}}h/24h</h6>
             </div>
 
@@ -51,7 +51,7 @@
                             <i class="bi bi-three-dots-vertical"></i>
                             <div class="context-menu p-2">
                                 <div class="c-pointer i-edit-task" (click)="changeEditableTask(task)">
-                                    <i class="bi bi-pencil-fill mt-1 me-1"></i> Edit
+                                    <i class="bi bi-pencil-fill mt-1 me-1"></i> Editar
                                 </div>
 
                                 <div class="c-pointer i-add-subtask mt-1" (click)="task.addSubtask = !task.addSubtask">
@@ -59,7 +59,7 @@
                                 </div>
 
                                 <div class="c-pointer i-remove-task mt-1" (click)="removeTask(tasks, i)">
-                                    <i class="bi bi-trash-fill mt-1 me-1"></i> Delete
+                                    <i class="bi bi-trash-fill mt-1 me-1"></i> Remover
                                 </div>
                             </div>
                         </div>
@@ -112,12 +112,12 @@
                                 <i class="bi bi-three-dots-vertical"></i>
                                 <div class="context-menu p-2">
                                     <div class="c-pointer i-edit-task" (click)="changeEditableTask(subtask)">
-                                        <i class="bi bi-pencil-fill mt-1 me-1"></i> Edit
+                                        <i class="bi bi-pencil-fill mt-1 me-1"></i> Editar
                                     </div>
 
                                     <div class="c-pointer i-remove-task mt-1" (click)="removeTask(task.subtasks, j)">
                                         <i class="bi bi-trash-fill mt-1 me-1">
-                                        </i> Delete
+                                        </i> Remover
                                     </div>
                                 </div>
                             </div>
