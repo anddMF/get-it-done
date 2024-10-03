@@ -20,7 +20,7 @@ export class HomeComponent {
   oldTotalTasksCounter: number = 0;
   usedHours: number = 0;
   showMessage: boolean = false;
-  deletedTasksMessage: string = "TIME'S UP! ALL TASKS WERE DELETED.";
+  deletedTasksMessage: string = "FIM DAS 24H! TODAS AS SUAS TAREFAS FORAM DELETADAS.";
 
   subtasks: Task[] = [];
 
@@ -118,14 +118,14 @@ export class HomeComponent {
 
   private generateInitialTasks() {
     this.subtasks = [
-      this.createTask('Form F234', 1, []),
-      this.createTask('Passport copy', 2, [], true)
+      this.createTask('Formulário F234', 1, []),
+      this.createTask('Fazer cópia do passaporte', 2, [], true)
     ];
   
     this.tasks = [
-      this.createTask('Send email to Robert', 1, [], true),
-      this.createTask('Finish Mary documentation', 2, this.subtasks),
-      this.createTask('Make dinner', 3, [])
+      this.createTask('Reponder email do Yuri', 1, [], true),
+      this.createTask('Documentação da Júlia', 2, this.subtasks),
+      this.createTask('Cozinhar o janter', 3, [])
     ];
 
     this.saveTasks();
